@@ -10,9 +10,9 @@ function Comment({comment}) {
   );
 }
 
-Comment.proptypes = {
+Comment.propTypes = {
   comment: PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     text: PropTypes.string,
     user: PropTypes.string
   }).isRequired

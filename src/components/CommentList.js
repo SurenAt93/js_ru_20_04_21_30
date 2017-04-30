@@ -23,7 +23,7 @@ CommentList.defaultProps = {
   comments: []
 }
 
-CommentList.proptypes = {
+CommentList.propTypes = {
   comments: PropTypes.array,
   isOpen: PropTypes.bool.isRequired,
   toggleOpen: PropTypes.func.isRequired
