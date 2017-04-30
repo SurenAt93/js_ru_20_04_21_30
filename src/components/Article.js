@@ -8,6 +8,7 @@ class Article extends Component {
 
   static propTypes = {
     article: PropTypes.shape({
+      id: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
       text: PropTypes.string,
       comments: PropTypes.array
