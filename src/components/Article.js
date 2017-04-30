@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 
 import CommentList from './CommentList';
 
-import toggleOpen from '../decorators/toggleOpen';
-
 class Article extends Component {
 
   static propTypes = {

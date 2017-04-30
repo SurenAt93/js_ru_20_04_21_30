@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 
-import Article from './Article'
+import Article from './Article';
 
 import collapse from '../decorators/collapse';
 
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 function ArticleList(props) {
 
