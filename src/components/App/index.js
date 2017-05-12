@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
-import ArticleList from './ArticleList'
-import Chart from './Chart'
-import UserForm from './UserForm'
+import ArticleList from '../ArticleList'
+import Chart from '../Chart'
+import UserForm from '../UserForm'
 import Select from 'react-select'
+import Range from '../Range/'
+
 import 'react-select/dist/react-select.css'
+import './style.css'
 
 class App extends Component {
     static propTypes = {
@@ -22,6 +25,7 @@ class App extends Component {
         }))
         return (
             <div>
+                <Range />
                 <UserForm />
                 <a href="#" onClick = {this.updateCounter}>update chart</a>
                 <Select options = {options} value = {this.state.selection}
