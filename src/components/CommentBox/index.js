@@ -29,16 +29,17 @@ export default class CommentBox extends PureComponent {
     }
 
     render() {
+        const { userName, commentText, textColor } = this.state;
         const style = {
-            color: this.state.textColor
+            color: textColor
         }
         return (
             <div>
                 <div>
-                    User: <input value={this.state.userName} onChange={this.handleChangeUser} />
+                    User: <input value={userName} onChange={this.handleChangeUser} />
                 </div>
                 <div className="comment-text-area">
-                    Comment: <textarea style={style} value={this.state.commentText} onChange={this.handleChangeComment} />
+                    Comment: <textarea style={style} value={commentText} onChange={this.handleChangeComment} />
                 </div>
                 <div>
                     <button disabled={this.canSend()} onClick={this.handleSubmit}>Send</button>

@@ -26,8 +26,8 @@ function getBody(props) {
                 {comments.map(comment => <li key={comment.id}><Comment comment={comment}/></li>)}
             </ul>
             <CommentBox
-                minLength={2}
-                maxLength={4}
+                minLength={10}
+                maxLength={20}
             />
         </div>
     )
