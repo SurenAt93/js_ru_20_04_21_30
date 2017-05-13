@@ -12,7 +12,7 @@ export default class CommentBox extends PureComponent {
     }
 
     static defaultProps = {
-        minLength: 0,
+        minLength: 10,
         maxLength: 20
     }
 
