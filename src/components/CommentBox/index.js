@@ -22,6 +22,7 @@ export default class CommentBox extends PureComponent {
         this.state = {
             commentText: '',
             userName: '',
+            //держи минимальный стейт. Это поле ты можешь определить из предыдущих прямо в render()
             textColor: 'black'
         }
 
