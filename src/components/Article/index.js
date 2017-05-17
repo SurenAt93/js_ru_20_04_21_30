@@ -3,6 +3,8 @@ import CommentList from '../CommentList'
 import PropTypes from 'prop-types'
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
 import './style.css'
+import { deleteArticle } from '../../AC'
+import { connect } from 'react-redux'
 
 class Article extends Component {
 /*
@@ -39,6 +41,7 @@ class Article extends Component {
             <section>
                 <h2 onClick={toggleOpen}>
                     {article.title}
+                    <button onClick={this.handleDelete}>Delete</button>
                 </h2>
                 <CSSTransitionGroup
                     transitionName = "article"
@@ -59,6 +62,11 @@ class Article extends Component {
             </div>
         )
     }
+
+    handleDelete = ev => {
+        ev.preventDefault();
+        this.props.deleteArticle(this.props.article.id);
+    }
 }
 
-export default Article
+export default connect(null, { deleteArticle })(Article)

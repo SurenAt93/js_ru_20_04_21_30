@@ -3,12 +3,9 @@ import {findDOMNode} from 'react-dom'
 import Article from './Article/index'
 import PropTypes from 'prop-types'
 import accordion from '../decorators/accordion'
+import { connect } from 'react-redux'
 
 class ArticleList extends Component {
-    componentDidMount() {
-        const ref = this.refs[this.props.articles[0].id]
-        console.log('---', ref, findDOMNode(ref))
-    }
 
     render() {
         const {articles, toggleOpenItem, isItemOpened} = this.props
@@ -34,4 +31,12 @@ ArticleList.propTypes = {
     isItemOpened: PropTypes.func.isRequired
 }
 
-export default accordion(ArticleList)
+function mapStateToProps(state) {
+    return {
+        articles: state.articles
+    }
+}
+
+export default connect(
+    mapStateToProps
+)(accordion(ArticleList));

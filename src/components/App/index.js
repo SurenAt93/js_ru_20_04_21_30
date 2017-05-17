@@ -4,6 +4,7 @@ import Chart from '../Chart'
 import UserForm from '../UserForm'
 import Select from 'react-select'
 import Range from '../Range/'
+import Counter from '../Counter'
 
 import 'react-select/dist/react-select.css'
 import './style.css'
@@ -19,19 +20,19 @@ class App extends Component {
     }
 
     render() {
-        const options = this.props.articles.map(article => ({
-            label: article.title,
-            value: article.id
-        }))
+        // const options = this.props.articles.map(article => ({
+        //     label: article.title,
+        //     value: article.id
+        // }))
         return (
             <div>
+                <Counter />
                 <Range />
                 <UserForm />
                 <a href="#" onClick = {this.updateCounter}>update chart</a>
-                <Select options = {options} value = {this.state.selection}
-                        onChange = {this.handleSelectionChange} multi />
-                <ArticleList articles = {this.props.articles} />
-                <Chart articles={this.props.articles} key={this.state.counter} />
+                <Select options = {[]} />
+                <ArticleList />
+                <Chart />
             </div>
         )
     }
