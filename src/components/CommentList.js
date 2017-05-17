@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import Comment from './Comment'
+import CommentForm from './CommentForm/index'
 import toggleOpen from '../decorators/toggleOpen'
 import PropTypes from 'prop-types'
-import CommentBox from './CommentBox/';
 
 function CommentList(props) {
     const {isOpen, toggleOpen} = props
@@ -19,13 +19,13 @@ function CommentList(props) {
 function getBody(props) {
     const {comments = [], isOpen} = props
     if (!isOpen) return null
-    if (!comments.length) return <p>No comments yet</p>
+    if (!comments.length) return <div><p>No comments yet</p><CommentForm/></div>
     return (
         <div>
             <ul>
                 {comments.map(comment => <li key={comment.id}><Comment comment={comment}/></li>)}
             </ul>
-            <CommentBox />
+            <CommentForm />
         </div>
     )
 }
