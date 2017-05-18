@@ -11,9 +11,33 @@ class ArticleList extends Component {
         console.log('---', ref, findDOMNode(ref))
     }
 
+    getIntersectionOfArticles(articles, selectedArticles) {
+        return articles.filter(article => {
+            const found = selectedArticles.filter(item => article.id === item.value);
+            if (found.length !== 0) return true;
+            return false;
+        });
+    }
+
+    choosedArticles(articles, selectedArticles, dateRange) {
+        if (selectedArticles.length === 0) return articles;
+        const intersectionOfArticles = this.getIntersectionOfArticles(articles, selectedArticles);
+
+        if (dateRange.from && dateRange.to) {
+            const from = Date.parse(dateRange.from);
+            const to = Date.parse(dateRange.to);
+            return intersectionOfArticles.filter(item => (Date.parse(item.date) > to && Date.parse(item.date) < from));
+        }
+
+        return intersectionOfArticles;
+    }
+
     render() {
-        const {articles, toggleOpenItem, isItemOpened} = this.props
-        const elements = articles.map(article => <li key={article.id}>
+        const {articles, toggleOpenItem, isItemOpened, selectedArticles, dateRange} = this.props
+
+        let choosedArticles = this.choosedArticles(articles, selectedArticles, dateRange);
+
+        const elements = choosedArticles.map(article => <li key={article.id}>
             <Article article={article}
                      isOpen={isItemOpened(article.id)}
                      toggleOpen={toggleOpenItem(article.id)}
@@ -35,7 +59,9 @@ ArticleList.propTypes = {
     isItemOpened: PropTypes.func.isRequired
 }
 
-export default connect(({articles}) => ({
-        articles
+export default connect(({articles, selectedArticles, dateRange}) => ({
+        articles,
+        selectedArticles,
+        dateRange
     })
 )(accordion(ArticleList))
