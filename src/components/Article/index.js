@@ -61,10 +61,12 @@ class Article extends Component {
     }
 
     getBody() {
+        const { comments, id: articleId } = this.props.article;
+
         return this.props.isOpen && (
             <div>
                 {this.props.article.text}
-                <CommentList comments={this.props.article.comments}/>
+                <CommentList comments={comments} articleId={articleId} />
             </div>
         )
     }

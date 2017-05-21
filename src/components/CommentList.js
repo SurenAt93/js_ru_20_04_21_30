@@ -25,7 +25,7 @@ function getBody(props) {
             <ul>
                 {comments.map(id => <li key={id}><Comment id={id}/></li>)}
             </ul>
-            <CommentForm />
+            <CommentForm articleId = { props.articleId } />
         </div>
     )
 }

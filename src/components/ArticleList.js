@@ -15,7 +15,7 @@ class ArticleList extends Component {
     render() {
         console.log('---', 'rendering ArticleList')
         const {articles, toggleOpenItem, isItemOpened} = this.props
-        const elements = articles.map(article => <li key={article.id}>
+        const elements = Object.values(articles).map(article => <li key={article.id}>
             <Article article = {article}
                      isOpen = {isItemOpened(article.id)}
                      toggleOpen = {toggleOpenItem(article.id)}
