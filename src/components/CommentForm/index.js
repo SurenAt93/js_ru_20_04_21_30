@@ -29,6 +29,7 @@ class CommentForm extends Component {
     }
 
     handleSubmit = ev => {
+        // without validation
         ev.preventDefault()
         const articleId = this.props.articleId;
         this.props.addComment({...this.state, articleId});

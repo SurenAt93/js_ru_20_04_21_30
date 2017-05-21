@@ -3,32 +3,29 @@ import {ADD_COMMENT, DELETE_ARTICLE} from '../constants'
 
 const articlesMap = defaultArticles.reduce((acc, article) => ({
     ...acc, [article.id]: article
-}), {})
-
-let addComment = function (articles, {articleId, id: commentId}) {
-  let newComments = [
-    ...articles[articleId].comments,
-    commentId
-  ]
-  let newArticle = {
-    ...articles[articleId],
-    comments: newComments
-  }
-
-  return {
-    ...articles,
-    [articleId]: newArticle
-  }
-};
+}), {});
 
 export default (articles = articlesMap, action) => {
     const {type, payload} = action
 
     switch (type) {
         case DELETE_ARTICLE:
-            return articles[payload.id]
+            let newArticlesList = Object.assign({}, articles);
+            delete newArticlesList[payload.id];
+            return newArticlesList;
         case ADD_COMMENT:
-            return addComment(articles, payload)
+            const {articleId, id: commentId} = payload;
+
+            return {
+                ...articles,
+                [articleId]: {
+                    ...articles[articleId],
+                    comments: [
+                        ...articles[articleId].comments,
+                        commentId
+                    ]
+                }
+              }
     }
 
     return articles

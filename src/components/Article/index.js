@@ -28,7 +28,8 @@ class Article extends Component {
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        return nextProps.isOpen != this.props.isOpen
+        return nextProps.isOpen != this.props.isOpen ||
+            nextProps.article.comments.length !== this.props.article.comments.length
     }
 
     componentWillUpdate() {
