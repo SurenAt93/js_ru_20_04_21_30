@@ -1,5 +1,6 @@
 import { ADD_COMMENT } from '../constants';
 
+    //через мидлвары будет проходить каждый экшин, они должны быть максимально общими, завязывать на конкретные экшины - не лучшее решение
 export default store => next => action => {
 
     if (action.type == ADD_COMMENT) {
